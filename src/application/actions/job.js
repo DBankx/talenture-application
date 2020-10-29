@@ -38,6 +38,9 @@ export const getJobs = (description, location) => async (dispatch) => {
   }
 };
 
+axios.defaults.baseURL =
+  'https://cors-anywhere.herokuapp.com/https://jobs.github.com';
+
 //get a single job
 export const getJob = (id) => async (dispatch) => {
   dispatch(startLoad());
