@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import './style.css';
+import { Provider } from 'react-redux';
+import store from './application/store';
+import ScrollToTop from './components/common/ScrollToTop';
+// history variable is created so the apps history can be gotten and used outside a functional component
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

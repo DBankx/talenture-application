@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import HomePage from './components/home/HomePage';
+import { Route, Switch } from 'react-router-dom';
+import Footer from './components/footer/Footer';
+import SearchPage from './components/main/SearchPage';
+import Job from './components/main/Job';
+import NotFound from './components/common/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div className='wrapper'>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route
+            exact
+            path='/search/:description?/:location?'
+            component={SearchPage}
+          />
+          <Route exact path='/job/:id' component={Job} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+      <Footer />
     </div>
   );
 }
